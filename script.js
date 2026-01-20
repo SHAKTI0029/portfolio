@@ -1,73 +1,45 @@
-const photo = document.querySelector(".photo");
+const nameText = "Shakti Kanta Behera";
+const taglineText = "BCA Student • Web Developer Intern";
+
 const nameEl = document.getElementById("name");
 const taglineEl = document.getElementById("tagline");
 const hireBtn = document.getElementById("hireBtn");
-
 const sections = document.querySelectorAll(".section");
+const main = document.getElementById("content");
 
-/* split text into letters */
-function splitText(el) {
-  const text = el.innerText;
-  el.innerHTML = "";
-  text.split("").forEach(ch => {
-    const span = document.createElement("span");
-    span.innerText = ch === " " ? "\u00A0" : ch;
-    el.appendChild(span);
-  });
+/* TYPE EFFECT */
+function typeText(text, el, speed, cb) {
+  let i = 0;
+  el.textContent = "";
+  const timer = setInterval(() => {
+    el.textContent += text[i];
+    i++;
+    if (i === text.length) {
+      clearInterval(timer);
+      cb && cb();
+    }
+  }, speed);
 }
 
-splitText(nameEl);
-splitText(taglineEl);
-
-/* PAGE LOAD SEQUENCE */
-window.addEventListener("load", () => {
-
-  // PHOTO
+/* SEQUENCE */
+window.onload = () => {
   setTimeout(() => {
-    photo.style.opacity = "1";
-    photo.style.transform = "scale(1)";
-  }, 300);
-
-  // NAME
-  setTimeout(() => {
-    document.querySelectorAll(".name span").forEach((s, i) => {
-      setTimeout(() => {
-        s.style.opacity = "1";
-        s.style.transform = "translateY(0)";
-      }, i * 80);
+    typeText(nameText, nameEl, 40, () => {
+      typeText(taglineText, taglineEl, 40, () => {
+        hireBtn.style.opacity = "1";
+        hireBtn.style.transition = "opacity 0.98s ease";
+      });
     });
-  }, 900);
+  }, 1000);
+};
 
-  // TAGLINE
-  setTimeout(() => {
-    document.querySelectorAll(".tagline span").forEach((s, i) => {
-      setTimeout(() => {
-        s.style.opacity = "1";
-        s.style.transform = "translateY(0)";
-      }, i * 60);
-    });
-  }, 1400);
+/* HIRE CLICK */
+hireBtn.onclick = () => {
+  main.style.display = "grid";
+  main.scrollIntoView({ behavior: "smooth" });
 
-  // HIRE ME
-  setTimeout(() => {
-    hireBtn.style.opacity = "1";
-    hireBtn.style.transform = "translateY(0)";
-  }, 2200);
-});
-
-/* HIRE ME CLICK */
-hireBtn.addEventListener("click", () => {
-
-  document.getElementById("about").scrollIntoView({
-    behavior: "smooth"
+  sections.forEach((sec, i) => {
+    sec.style.animation = `fadeUp ${i === 0 ? "1.2s" : "0.88s"} ease forwards`;
+    sec.style.animationDelay = `${i * 0.3}s`;
   });
-
-  setTimeout(() => {
-    sections.forEach((sec, i) => {
-      setTimeout(() => {
-        sec.style.opacity = "1";
-        sec.style.transform = "translateY(0)";
-      }, i * 900);
-    });
-  }, 900);
-});
+};

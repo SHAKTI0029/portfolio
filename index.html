@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shakti Kanta Behera | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="photo">
-      <img src="profile.jpeg" alt="Shakti">
+    <div class="photo-wrapper">
+      <img src="profile.jpeg" alt="Shakti" class="profile" />
     </div>
 
-    <h1 class="name" id="name">Shakti Kanta Behera</h1>
-    <p class="tagline" id="tagline">BCA Student · Web Developer Intern</p>
+    <h1 class="name" id="name"></h1>
+    <p class="tagline" id="tagline"></p>
 
-    <button id="hireBtn" class="hire">Hire Me</button>
+    <button class="hire-btn" id="hireBtn">Hire Me</button>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <h2>About Me</h2>
-    <p>I am a BCA student passionate about web development.</p>
-  </section>
+  <!-- CONTENT -->
+  <main id="content">
+    <section class="section about">
+      <h2>About Me</h2>
+      <p>
+        I am a BCA student passionate about web development and building clean,
+        responsive and user-friendly websites. I am actively looking for a web
+        development internship.
+      </p>
+    </section>
 
-  <!-- SKILLS -->
-  <section class="section" id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span class="html">HTML</span>
-      <span class="css">CSS</span>
-      <span class="js">JavaScript</span>
-      <span class="c">C Programming</span>
-    </div>
-  </section>
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill html">HTML</span>
+        <span class="skill css">CSS</span>
+        <span class="skill js">JavaScript</span>
+        <span class="skill c">C Programming</span>
+      </div>
+    </section>
 
-  <!-- PROJECT -->
-  <section class="section" id="project">
-    <h2>Project</h2>
-    <p>Personal Portfolio Website</p>
-  </section>
+    <section class="section">
+      <h2>Project</h2>
+      <p>Personal Portfolio Website using HTML, CSS and JavaScript.</p>
+    </section>
 
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <h2>Contact</h2>
-    <p>Email: yourmail@gmail.com</p>
-  </section>
+    <section class="section">
+      <h2>Contact</h2>
+      <p>Email: yourmail@gmail.com</p>
+    </section>
+  </main>
 
   <script src="script.js"></script>
 </body>
