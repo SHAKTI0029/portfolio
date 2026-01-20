@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* PHOTO – 1x */
+.photo-circle {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 4px solid #38bdf8;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 1s ease;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* NAME + TAGLINE */
+.name {
+  font-size: 36px;
+  color: #38bdf8;
+  letter-spacing: 2px;
+  margin-bottom: 6px;
+}
+
+.tagline {
+  font-size: 15px;
+  color: #cbd5f5;
+  margin-bottom: 20px;
+}
+
+.name span,
+.tagline span {
+  opacity: 0;
+  display: inline-block;
+  transform: translateY(20px);
+  transition: all 0.75s ease; /* 0.88x */
+}
+
+/* HIRE ME – 0.75x */
+#hireBtn {
+  opacity: 0;
+  padding: 12px 32px;
+  border-radius: 30px;
+  border: none;
+  background: #38bdf8;
+  color: #020617;
+  font-size: 16px;
+  cursor: pointer;
+
+  transform: translateY(14px) scale(0.95);
+  transition: all 0.55s ease;
+}
+
+#hireBtn.animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* SECTIONS (hidden initially) */
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.25s ease; /* ≈ 0.90x */
+}
+
+section h2 {
+  color: #38bdf8;
+  margin-bottom: 16px;
+}
+
+/* SKILLS – COLORED */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills span {
+  padding: 10px 18px;
+  border-radius: 22px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.skills .html { background: rgba(255,87,34,0.2); color: #ff5722; }
+.skills .css  { background: rgba(33,150,243,0.2); color: #2196f3; }
+.skills .js   { background: rgba(255,193,7,0.2); color: #ffc107; }
+.skills .c    { background: rgba(76,175,80,0.2); color: #4caf50; }
