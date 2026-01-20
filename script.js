@@ -1,14 +1,11 @@
-const photo = document.querySelector(".photo-circle");
-const name = document.querySelector(".name");
-const tagline = document.querySelector(".tagline");
+const photo = document.querySelector(".photo");
+const nameEl = document.getElementById("name");
+const taglineEl = document.getElementById("tagline");
 const hireBtn = document.getElementById("hireBtn");
 
-const about = document.getElementById("about");
-const skills = document.getElementById("skills");
-const project = document.getElementById("project");
-const contact = document.getElementById("contact");
+const sections = document.querySelectorAll(".section");
 
-/* helper: split text into letters */
+/* split text into letters */
 function splitText(el) {
   const text = el.innerText;
   el.innerHTML = "";
@@ -19,70 +16,58 @@ function splitText(el) {
   });
 }
 
-splitText(name);
-splitText(tagline);
+splitText(nameEl);
+splitText(taglineEl);
 
 /* PAGE LOAD SEQUENCE */
 window.addEventListener("load", () => {
 
-  // PHOTO – 1x
+  // PHOTO
   setTimeout(() => {
     photo.style.opacity = "1";
     photo.style.transform = "scale(1)";
   }, 300);
 
-  // NAME – 0.88x
+  // NAME
   setTimeout(() => {
-    document.querySelectorAll(".name span").forEach((sp, i) => {
+    document.querySelectorAll(".name span").forEach((s, i) => {
       setTimeout(() => {
-        sp.style.opacity = "1";
-        sp.style.transform = "translateY(0)";
+        s.style.opacity = "1";
+        s.style.transform = "translateY(0)";
       }, i * 80);
     });
   }, 900);
 
-  // TAGLINE – same animation
+  // TAGLINE
   setTimeout(() => {
-    document.querySelectorAll(".tagline span").forEach((sp, i) => {
+    document.querySelectorAll(".tagline span").forEach((s, i) => {
       setTimeout(() => {
-        sp.style.opacity = "1";
-        sp.style.transform = "translateY(0)";
+        s.style.opacity = "1";
+        s.style.transform = "translateY(0)";
       }, i * 60);
     });
   }, 1400);
 
-  // HIRE ME – after all (0.75x)
+  // HIRE ME
   setTimeout(() => {
-    hireBtn.classList.add("animate");
+    hireBtn.style.opacity = "1";
+    hireBtn.style.transform = "translateY(0)";
   }, 2200);
 });
 
-/* HIRE ME CLICK → SECTIONS (0.90x) */
+/* HIRE ME CLICK */
 hireBtn.addEventListener("click", () => {
 
-  // scroll first
-  about.scrollIntoView({ behavior: "smooth" });
+  document.getElementById("about").scrollIntoView({
+    behavior: "smooth"
+  });
 
-  // then animate sections
   setTimeout(() => {
-
-    about.style.opacity = "1";
-    about.style.transform = "translateY(0)";
-
-    setTimeout(() => {
-      skills.style.opacity = "1";
-      skills.style.transform = "translateY(0)";
-    }, 900);
-
-    setTimeout(() => {
-      project.style.opacity = "1";
-      project.style.transform = "translateY(0)";
-    }, 1800);
-
-    setTimeout(() => {
-      contact.style.opacity = "1";
-      contact.style.transform = "translateY(0)";
-    }, 2700);
-
-  }, 1000);
+    sections.forEach((sec, i) => {
+      setTimeout(() => {
+        sec.style.opacity = "1";
+        sec.style.transform = "translateY(0)";
+      }, i * 900);
+    });
+  }, 900);
 });
