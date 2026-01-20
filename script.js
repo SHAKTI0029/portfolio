@@ -11,8 +11,10 @@ const main = document.getElementById("content");
 function typeText(text, el, speed, cb) {
   let i = 0;
   el.textContent = "";
+  el.style.opacity = "1";
+
   const timer = setInterval(() => {
-    el.textContent += text[i];
+    el.textContent += text.charAt(i);
     i++;
     if (i === text.length) {
       clearInterval(timer);
@@ -21,25 +23,44 @@ function typeText(text, el, speed, cb) {
   }, speed);
 }
 
-/* SEQUENCE */
+/* INTRO SEQUENCE */
 window.onload = () => {
+  // reset
+  nameEl.style.opacity = "0";
+  taglineEl.style.opacity = "0";
+  hireBtn.style.opacity = "0";
+
+  // Name animation (0.88x feel)
   setTimeout(() => {
-    typeText(nameText, nameEl, 40, () => {
-      typeText(taglineText, taglineEl, 40, () => {
-        hireBtn.style.opacity = "1";
-        hireBtn.style.transition = "opacity 0.98s ease";
+    typeText(nameText, nameEl, 38, () => {
+      // Tagline animation (same style, yellow via CSS)
+      typeText(taglineText, taglineEl, 38, () => {
+        // Hire Me appears LAST (0.98x smooth)
+        setTimeout(() => {
+          hireBtn.style.opacity = "1";
+          hireBtn.style.transform = "scale(1)";
+          hireBtn.style.transition =
+            "opacity 0.98s ease, transform 0.98s ease";
+        }, 300);
       });
     });
-  }, 1000);
+  }, 900);
 };
 
-/* HIRE CLICK */
-hireBtn.onclick = () => {
+/* HIRE ME CLICK */
+hireBtn.addEventListener("click", () => {
   main.style.display = "grid";
+
+  // smooth scroll FIRST
   main.scrollIntoView({ behavior: "smooth" });
 
-  sections.forEach((sec, i) => {
-    sec.style.animation = `fadeUp ${i === 0 ? "1.2s" : "0.88s"} ease forwards`;
-    sec.style.animationDelay = `${i * 0.3}s`;
-  });
-};
+  // sections animate AFTER scroll (no speed jump)
+  setTimeout(() => {
+    sections.forEach((sec, i) => {
+      sec.style.animation = `fadeUp ${
+        i === 0 ? "1.8s" : "1.2s"
+      } ease forwards`;
+      sec.style.animationDelay = `${i * 0.7}s`;
+    });
+  }, 800);
+});
