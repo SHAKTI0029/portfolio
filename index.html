@@ -4,14 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shakti Kanta Behera | Portfolio</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HERO -->
+  <!-- ================= NAV ================= -->
+  <div class="navbar">
+    <button class="theme-toggle" id="themeToggle">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+
+  <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="photo-wrapper">
-      <img src="profile.jpeg" alt="Shakti" class="profile" />
+      <img src="profile.jpeg" alt="Shakti Kanta Behera" class="profile" />
     </div>
 
     <h1 class="name" id="name"></h1>
@@ -20,38 +35,173 @@
     <button class="hire-btn" id="hireBtn">Hire Me</button>
   </section>
 
-  <!-- CONTENT -->
+  <!-- ================= MAIN CONTENT ================= -->
   <main id="content">
-    <section class="section about">
+
+    <!-- ABOUT ME -->
+    <section class="section" id="about">
       <h2>About Me</h2>
+
       <p>
-        I am a BCA student passionate about web development and building clean,
-        responsive and user-friendly websites. I am actively looking for a web
-        development internship.
+        Hi, I’m <strong>Shakti Kanta Behera</strong>, a BCA student with a strong
+        interest in web development. I enjoy creating clean, responsive, and
+        user-friendly websites using modern web technologies.
       </p>
+
+      <p>
+        I work with <strong>HTML, CSS, and JavaScript</strong> and believe in
+        learning through practice by building real projects. I continuously
+        focus on improving my skills and understanding how good design and
+        functionality work together.
+      </p>
+
+      <p>
+        Currently, I’m looking for an
+        <strong>internship or entry-level opportunity</strong> where I can gain
+        real-world experience, contribute to meaningful projects, and grow as a
+        developer.
+      </p>
+
+      <a href="resume.pdf" class="cta-btn" download>
+        ⬇ Download Resume
+      </a>
     </section>
 
+    <!-- SKILLS -->
     <section class="section">
       <h2>Skills</h2>
+
       <div class="skills">
-        <span class="skill html">HTML</span>
-        <span class="skill css">CSS</span>
-        <span class="skill js">JavaScript</span>
-        <span class="skill c">C Programming</span>
+        <span class="skill html"><i class="fa-brands fa-html5"></i> HTML</span>
+        <span class="skill css"><i class="fa-brands fa-css3-alt"></i> CSS</span>
+        <span class="skill js"><i class="fa-brands fa-js"></i> JavaScript</span>
+        <span class="skill python"><i class="fa-brands fa-python"></i> Python</span>
+        <span class="skill c">C / C++</span>
+        <span class="skill mysql">MySQL</span>
+        <span class="skill git"><i class="fa-brands fa-git-alt"></i> Git</span>
+        <span class="skill github"><i class="fa-brands fa-github"></i> GitHub</span>
+        <span class="skill ms">MS Office (Word, Excel, PowerPoint)</span>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section class="section">
-      <h2>Project</h2>
-      <p>Personal Portfolio Website using HTML, CSS and JavaScript.</p>
+      <h2>Projects</h2>
+
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>Animated responsive portfolio using HTML, CSS & JS.</p>
+          <a href="#" target="_blank">View on GitHub</a>
+        </div>
+
+        <div class="project-card">
+          <h3>Practice Projects</h3>
+          <p>Small UI & logic-based projects for learning.</p>
+          <a href="#" target="_blank">View Repos</a>
+        </div>
+      </div>
     </section>
 
+    <!-- CERTIFICATES -->
+    <section class="section">
+      <h2>Certificates</h2>
+
+      <div class="cert-grid">
+        <img src="cert1.jpg" class="cert-img" alt="Certificate 1" />
+        <img src="cert2.jpg" class="cert-img" alt="Certificate 2" />
+        <img src="cert3.jpg" class="cert-img" alt="Certificate 3" />
+      </div>
+    </section>
+
+    <!-- WHY HIRE ME -->
+    <section class="section">
+      <h2>Why Hire Me?</h2>
+      <ul class="list">
+        <li>Strong fundamentals in web development</li>
+        <li>Fast learner & highly motivated</li>
+        <li>Clean UI with focus on user experience</li>
+        <li>Ready to grow with real-world projects</li>
+      </ul>
+      <p class="available">🟢 Available for Internship</p>
+    </section>
+
+    <!-- STATS -->
+    <section class="section">
+      <h2>Profile Stats</h2>
+      <div class="stats">
+        <div class="stat">
+          <span id="views">0</span>
+          <p>Profile Views</p>
+        </div>
+        <div class="stat">
+          <span>10+</span>
+          <p>Practice Projects</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section class="section">
       <h2>Contact</h2>
-      <p>Email: yourmail@gmail.com</p>
+      <p>
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:beherashaktikanata39@gmail.com">
+          beherashaktikanata39@gmail.com
+        </a>
+      </p>
+
+      <p>
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:8260776170">+91 8260776170</a>
+      </p>
+
+      <p>
+        <i class="fa-brands fa-linkedin"></i>
+        <a
+          href="https://www.linkedin.com/in/shakti-ai-ml"
+          target="_blank"
+        >
+          LinkedIn Profile
+        </a>
+      </p>
     </section>
+
+    <!-- CTA -->
+    <section class="section cta-box">
+      <h2>Looking for an Intern?</h2>
+      <p>I’m ready to learn, contribute, and grow.</p>
+      <a href="mailto:beherashaktikanata39@gmail.com" class="cta-btn">
+        Apply for Internship
+      </a>
+    </section>
+
   </main>
 
+  <!-- ================= MODAL ================= -->
+  <div class="modal" id="certModal">
+    <span class="close">&times;</span>
+    <img id="modalImg" />
+  </div>
+
+  <!-- ================= AUDIO ================= -->
+  <audio id="clickSound" src="toggle.mp3"></audio>
+
+  <!-- ================= WHATSAPP ================= -->
+  <a
+    href="https://wa.me/918260776170"
+    class="whatsapp-float"
+    target="_blank"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- ================= TOP BUTTON ================= -->
+  <button class="top-btn" id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 </html>

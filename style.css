@@ -1,28 +1,55 @@
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   background: radial-gradient(circle at top, #0b1a33, #040b1a);
   color: #eaf6ff;
   overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* HERO */
+/* ================= NAV ================= */
+.navbar {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+}
+
+.theme-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  color: #4dcfff;
+  cursor: pointer;
+  font-size: 18px;
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(77,207,255,0.7);
+}
+
+/* ================= HERO ================= */
 .hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   gap: 18px;
   text-align: center;
 }
 
-/* PHOTO */
 .photo-wrapper {
   opacity: 0;
   animation: photoIn 1s ease forwards;
@@ -37,23 +64,19 @@ body {
   box-shadow: 0 0 40px rgba(61,199,255,1);
 }
 
-/* NAME */
 .name {
   font-size: 38px;
   color: #4dcfff;
-  text-shadow: 0 0 18px rgba(77,207,255,0.9);
   min-height: 48px;
 }
 
-/* TAGLINE */
 .tagline {
   font-size: 18px;
   color: #ffd43b;
-  text-shadow: 0 0 14px rgba(255,212,59,0.9);
   min-height: 24px;
 }
 
-/* HIRE BTN */
+/* ================= HIRE ME ================= */
 .hire-btn {
   margin-top: 14px;
   padding: 12px 38px;
@@ -65,38 +88,78 @@ body {
   color: #fff;
   box-shadow: 0 0 35px rgba(255,0,0,1);
   opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
-/* MAIN */
+.hire-btn:hover {
+  transform: scale(1.08);
+}
+
+/* ================= MAIN ================= */
 main {
   display: none;
-  padding: 80px 40px;
   max-width: 1200px;
   margin: auto;
+  padding: 80px 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 60px;
 }
 
+/* ================= SECTIONS ================= */
 .section {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.05);
   padding: 30px;
   border-radius: 18px;
   opacity: 0;
   transform: translateY(60px);
+  position: relative;
+  transition: all 0.35s ease;
 }
 
 .section:first-child {
   grid-column: span 2;
 }
 
-/* HEADINGS */
 .section h2 {
   color: #4dcfff;
   margin-bottom: 12px;
 }
 
-/* SKILLS */
+/* ================= PREMIUM GLOW ================= */
+.section:hover,
+.skill:hover,
+.project-card:hover,
+.cta-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow:
+    0 0 12px rgba(77,207,255,0.6),
+    0 0 25px rgba(77,207,255,0.4),
+    0 0 45px rgba(77,207,255,0.25);
+}
+
+.section:active,
+.skill:active,
+.project-card:active,
+.cta-btn:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 18px rgba(255,255,255,0.8),
+    0 0 40px rgba(77,207,255,0.9);
+}
+
+/* ================= LIST ================= */
+.list {
+  padding-left: 18px;
+}
+
+.list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* ================= SKILLS ================= */
 .skills {
   display: flex;
   flex-wrap: wrap;
@@ -108,15 +171,216 @@ main {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-  box-shadow: 0 0 18px rgba(0,0,0,0.5);
+  box-shadow: 0 0 18px rgba(0,0,0,0.4);
 }
 
+/* Skill Colors */
 .html { background:#ff6b6b; }
 .css { background:#4dabf7; }
 .js { background:#ffd43b; color:#222; }
 .c { background:#51cf66; }
+.mysql { background:#38bdf8; }
+.git { background:#f97316; }
+.github { background:#111827; }
+.python { background:#22c55e; }
+.ms { background:#6366f1; }
 
-/* MOBILE */
+/* ================= PROJECTS ================= */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.06);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.project-card a {
+  color: #4dcfff;
+  text-decoration: none;
+}
+
+/* ================= CERTIFICATES ================= */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.cert-img {
+  width: 100%;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.cert-img:hover {
+  transform: scale(1.05);
+}
+
+/* ================= MODAL ================= */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal img {
+  max-width: 90%;
+  border-radius: 12px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ================= CTA ================= */
+.cta-box {
+  text-align: center;
+  background: linear-gradient(135deg, #ff4d4d, #ff0000);
+  color: #fff;
+}
+
+.cta-btn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 12px 28px;
+  background: #fff;
+  color: #000;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  animation: resumePulse 2.4s infinite;
+}
+
+/* Pulse animation */
+@keyframes resumePulse {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(77,207,255,0.7),
+      0 0 18px rgba(77,207,255,0.6);
+  }
+  70% {
+    box-shadow:
+      0 0 0 14px rgba(77,207,255,0),
+      0 0 30px rgba(77,207,255,0.9);
+  }
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(77,207,255,0),
+      0 0 18px rgba(77,207,255,0.6);
+  }
+}
+
+.cta-btn:hover {
+  animation-play-state: paused;
+}
+
+/* ================= STATS ================= */
+.stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  background: rgba(255,255,255,0.06);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  min-width: 140px;
+}
+
+.stat span {
+  font-size: 26px;
+  color: #4dcfff;
+}
+
+/* ================= AVAILABILITY ================= */
+.available {
+  color: #4ade80;
+  font-weight: 600;
+}
+
+/* ================= WHATSAPP ================= */
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 8px 25px rgba(37,211,102,0.6);
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+
+/* ================= TOP BUTTON ================= */
+.top-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  border: none;
+  background: #4dcfff;
+  color: #000;
+  display: none;
+  cursor: pointer;
+}
+
+/* ================= LIGHT MODE ================= */
+body.light-mode {
+  background: #f4f7fb;
+  color: #111;
+}
+
+body.light-mode .section {
+  background: #ffffff;
+}
+
+body.light-mode .section h2 {
+  color: #2563eb;
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes photoIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
   .name { font-size: 32px; }
   .tagline { font-size: 16px; }
@@ -129,14 +393,4 @@ main {
   .section:first-child {
     grid-column: span 1;
   }
-}
-
-/* ANIMATIONS */
-@keyframes photoIn {
-  from { transform: scale(0.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
 }

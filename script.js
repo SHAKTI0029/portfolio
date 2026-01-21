@@ -1,14 +1,19 @@
+/* ================= TEXT CONTENT ================= */
 const nameText = "Shakti Kanta Behera";
 const taglineText = "BCA Student • Web Developer Intern";
 
+/* ================= ELEMENTS ================= */
 const nameEl = document.getElementById("name");
 const taglineEl = document.getElementById("tagline");
 const hireBtn = document.getElementById("hireBtn");
-const sections = document.querySelectorAll(".section");
 const main = document.getElementById("content");
+const sections = document.querySelectorAll(".section");
+const themeToggle = document.getElementById("themeToggle");
+const topBtn = document.getElementById("topBtn");
+const clickSound = document.getElementById("clickSound");
 
-/* TYPE EFFECT */
-function typeText(text, el, speed, cb) {
+/* ================= TYPE EFFECT ================= */
+function typeText(text, el, speed, callback) {
   let i = 0;
   el.textContent = "";
   el.style.opacity = "1";
@@ -18,49 +23,112 @@ function typeText(text, el, speed, cb) {
     i++;
     if (i === text.length) {
       clearInterval(timer);
-      cb && cb();
+      if (callback) callback();
     }
   }, speed);
 }
 
-/* INTRO SEQUENCE */
-window.onload = () => {
-  // reset
+/* ================= INTRO ANIMATION ================= */
+window.addEventListener("load", () => {
   nameEl.style.opacity = "0";
   taglineEl.style.opacity = "0";
   hireBtn.style.opacity = "0";
+  hireBtn.style.transform = "scale(0.7)";
 
-  // Name animation (0.88x feel)
   setTimeout(() => {
-    typeText(nameText, nameEl, 38, () => {
-      // Tagline animation (same style, yellow via CSS)
-      typeText(taglineText, taglineEl, 38, () => {
-        // Hire Me appears LAST (0.98x smooth)
-        setTimeout(() => {
-          hireBtn.style.opacity = "1";
-          hireBtn.style.transform = "scale(1)";
-          hireBtn.style.transition =
-            "opacity 0.98s ease, transform 0.98s ease";
-        }, 300);
+    typeText(nameText, nameEl, 40, () => {
+      typeText(taglineText, taglineEl, 40, () => {
+        hireBtn.style.opacity = "1";
+        hireBtn.style.transform = "scale(1)";
       });
     });
-  }, 900);
-};
+  }, 600);
+});
 
-/* HIRE ME CLICK */
+/* ================= SOUND SAFE PLAY ================= */
+function playSound() {
+  if (clickSound) {
+    clickSound.currentTime = 0;
+    clickSound.play().catch(() => {});
+  }
+}
+
+/* ================= HIRE ME CLICK ================= */
 hireBtn.addEventListener("click", () => {
-  main.style.display = "grid";
+  playSound();
 
-  // smooth scroll FIRST
+  main.style.display = "grid";
   main.scrollIntoView({ behavior: "smooth" });
 
-  // sections animate AFTER scroll (no speed jump)
   setTimeout(() => {
-    sections.forEach((sec, i) => {
-      sec.style.animation = `fadeUp ${
-        i === 0 ? "1.8s" : "1.2s"
-      } ease forwards`;
-      sec.style.animationDelay = `${i * 0.7}s`;
+    sections.forEach((section, index) => {
+      const duration = index === 0 ? "2.2s" : "1.2s"; // About slower
+      section.style.animation = `fadeUp ${duration} ease forwards`;
+      section.style.animationDelay = `${index * 0.35}s`;
     });
-  }, 800);
+  }, 500);
+});
+
+/* ================= PROFILE VIEWS ================= */
+let views = localStorage.getItem("profileViews");
+views = views ? parseInt(views) + 1 : 1;
+localStorage.setItem("profileViews", views);
+
+const viewsEl = document.getElementById("views");
+if (viewsEl) viewsEl.textContent = views;
+
+/* ================= SCROLL TO TOP ================= */
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 350) {
+    topBtn.style.display = "block";
+  } else {
+    topBtn.style.display = "none";
+  }
+});
+
+topBtn.addEventListener("click", () => {
+  playSound();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+/* ================= DARK / LIGHT MODE ================= */
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+  playSound();
+
+  // icon switch
+  themeToggle.innerHTML = document.body.classList.contains("light-mode")
+    ? '<i class="fa-solid fa-sun"></i>'
+    : '<i class="fa-solid fa-moon"></i>';
+});
+
+/* ================= CERTIFICATE POPUP ================= */
+const certImages = document.querySelectorAll(".cert-img");
+const modal = document.getElementById("certModal");
+const modalImg = document.getElementById("modalImg");
+const closeBtn = document.querySelector(".close");
+
+certImages.forEach(img => {
+  img.addEventListener("click", () => {
+    playSound();
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  });
+});
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+}
+
+window.addEventListener("click", e => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+/* ================= CLICK SOUND FOR BUTTONS ================= */
+document.querySelectorAll("button, a").forEach(el => {
+  el.addEventListener("click", playSound);
 });
