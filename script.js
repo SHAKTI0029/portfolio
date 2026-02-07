@@ -132,3 +132,50 @@ window.addEventListener("click", e => {
 document.querySelectorAll("button, a").forEach(el => {
   el.addEventListener("click", playSound);
 });
+/* ================= RESUME DOWNLOAD WITH SOUND ================= */
+const downloadBtn = document.getElementById("downloadBtn");
+
+if (downloadBtn) {
+  downloadBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // ⛔ navigation roko
+
+    playSound();
+
+    // thoda delay taki sound start ho jaye
+    setTimeout(() => {
+      window.location.href = "resume.pdf";
+    }, 250);
+  });
+}
+/* ================= HAPTIC ADD-ON (SAFE) ================= */
+function haptic(ms = 20) {
+  if ("vibrate" in navigator) {
+    navigator.vibrate(ms);
+  }
+}
+
+/* ================= RESUME DOWNLOAD : SOUND + HAPTIC ================= */
+(function () {
+  const downloadBtn = document.getElementById("downloadBtn");
+  const clickSound = document.getElementById("clickSound");
+
+  if (!downloadBtn) return;
+
+  downloadBtn.addEventListener("pointerup", function (e) {
+    e.preventDefault();
+
+    // sound
+    if (clickSound) {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(() => {});
+    }
+
+    // haptic
+    haptic(30);
+
+    // delayed download
+    setTimeout(() => {
+      window.location.href = "resume.pdf";
+    }, 250);
+  });
+})();
